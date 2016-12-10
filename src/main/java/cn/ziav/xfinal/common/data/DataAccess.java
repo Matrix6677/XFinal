@@ -1,4 +1,4 @@
-package cn.ziav.xfinal.common;
+package cn.ziav.xfinal.common.data;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

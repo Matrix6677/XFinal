@@ -1,4 +1,4 @@
-package cn.ziav.xfinal.common;
+package cn.ziav.xfinal.common.cache;
 
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;

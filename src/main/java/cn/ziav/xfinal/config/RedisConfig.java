@@ -9,8 +9,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 public class RedisConfig {
 	@Bean
 	public StringRedisTemplate redisTemplate(RedisConnectionFactory factory) {
-		StringRedisTemplate redisTemplate = new StringRedisTemplate();
-		redisTemplate.setConnectionFactory(factory);
+		StringRedisTemplate redisTemplate = new StringRedisTemplate(factory);
 		redisTemplate.setEnableTransactionSupport(true);
 		return redisTemplate;
 	}

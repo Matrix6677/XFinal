@@ -21,5 +21,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		fastJsonConverter.setSupportedMediaTypes(supportedMediaTypes);
 		converters.add(fastJsonConverter);
 	}
-
 }
