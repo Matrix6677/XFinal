@@ -10,7 +10,8 @@ import java.util.Map;
  */
 public class Result<T> implements Serializable {
 
-	private static final long serialVersionUID = 8855012718532767136L;
+	/** */
+	private static final long serialVersionUID = -6219092741148462736L;
 
 	/** 成功的返回码 */
 	public static final int SUCCESS = 0;
