@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
@@ -27,8 +26,6 @@ public class SeckillServiceImpl implements SeckillService {
 	private SeckillManager seckillManager;
 	@Autowired
 	private SuccessKilledManager successKilledManager;
-	@Autowired
-	private StringRedisTemplate redisTemplate;
 
 	@Override
 	public List<Seckill> getSeckillList() {

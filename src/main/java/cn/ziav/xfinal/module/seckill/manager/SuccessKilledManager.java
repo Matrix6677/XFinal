@@ -12,10 +12,7 @@ public class SuccessKilledManager {
 	private EntityService<PK, SuccessKilled> successKilledService;
 
 	public SuccessKilled insertSuccessKilled(long seckillId, long userPhone) {
-		SuccessKilled successKilled = successKilledService.loadOrCreate(PK.valueOf(seckillId, userPhone), pk -> {
-			return SuccessKilled.valueOf(pk);
-		});
-		return successKilled;
+		return successKilledService.loadOrCreate(PK.valueOf(seckillId, userPhone), pk -> SuccessKilled.valueOf(pk));
 	}
 
 	public SuccessKilled queryByIdWithSeckill(long seckillId, long userPhone) {

@@ -3,7 +3,7 @@ package cn.ziav.xfinal.module.seckill.manager;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.ziav.xfinal.common.data.DataAccess;
@@ -11,7 +11,7 @@ import cn.ziav.xfinal.common.data.EntityService;
 import cn.ziav.xfinal.common.exception.ManagedException;
 import cn.ziav.xfinal.module.seckill.facade.SeckillResult;
 
-@Repository
+@Component
 public class SeckillManager {
 	@DataAccess
 	private EntityService<Long, Seckill> seckillEntityService;
@@ -35,6 +35,14 @@ public class SeckillManager {
 
 	public List<Seckill> queryAll(int offset, int limit) {
 		return seckillEntityService.list(offset, limit);
+	}
+
+	public EntityService<Long, Seckill> getSeckillEntityService() {
+		return seckillEntityService;
+	}
+
+	public void setSeckillEntityService(EntityService<Long, Seckill> seckillEntityService) {
+		this.seckillEntityService = seckillEntityService;
 	}
 
 }

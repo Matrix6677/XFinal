@@ -13,4 +13,5 @@ public interface SeckillService {
 	Exposer exportSeckillUrl(long seckillId);
 
 	void executeSeckill(long seckillId, long userPhone, String md5);
+
 }

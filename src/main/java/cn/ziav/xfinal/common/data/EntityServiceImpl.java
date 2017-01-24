@@ -56,12 +56,20 @@ public class EntityServiceImpl<PK extends Comparable<PK> & Serializable, T exten
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<T> list(int offset, int limit) {
-		String sql = "select from ";
+	public List<T> list() {
+		String sql = "from ";
 		sql += entityClz.getSimpleName();
-		sql += " limit " + offset;
-		sql += ", " + limit;
 		TypedQuery<T> query = entityManager.createQuery(sql, entityClz);
+		return query.getResultList();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<T> list(int offset, int limit) {
+		String sql = "from ";
+		sql += entityClz.getSimpleName();
+		TypedQuery<T> query = entityManager.createQuery(sql, entityClz);
+		query.setFirstResult(offset).setMaxResults(limit);
 		return query.getResultList();
 	}
 

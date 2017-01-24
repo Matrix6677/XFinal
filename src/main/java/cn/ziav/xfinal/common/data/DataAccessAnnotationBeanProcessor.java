@@ -38,7 +38,7 @@ public class DataAccessAnnotationBeanProcessor extends InstantiationAwareBeanPos
 	private EntityManager entityManager;
 
 	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 		ReflectionUtils.doWithFields(bean.getClass(), new DataAccessFieldCallback(bean, beanFactory));
 		return super.postProcessAfterInitialization(bean, beanName);
 	}
@@ -60,7 +60,7 @@ public class DataAccessAnnotationBeanProcessor extends InstantiationAwareBeanPos
 			if (!field.isAnnotationPresent(DataAccess.class)) {
 				return;
 			}
-			if (!field.getType().isAssignableFrom(EntityService.class)) {
+			if (!EntityService.class.isAssignableFrom(field.getType())) {
 				return;
 			}
 

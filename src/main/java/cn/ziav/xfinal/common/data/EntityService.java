@@ -45,4 +45,6 @@ public interface EntityService<PK extends Comparable<PK> & Serializable, T exten
 
 	List<T> list(int offset, int limit);
 
+	List<T> list();
+
 }
