@@ -36,13 +36,4 @@ public class SeckillManager {
 	public List<Seckill> queryAll(int offset, int limit) {
 		return seckillEntityService.list(offset, limit);
 	}
-
-	public EntityService<Long, Seckill> getSeckillEntityService() {
-		return seckillEntityService;
-	}
-
-	public void setSeckillEntityService(EntityService<Long, Seckill> seckillEntityService) {
-		this.seckillEntityService = seckillEntityService;
-	}
-
 }
