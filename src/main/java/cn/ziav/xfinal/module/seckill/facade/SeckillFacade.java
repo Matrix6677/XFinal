@@ -18,7 +18,7 @@ public interface SeckillFacade {
 	@RequestMapping(value = "/{seckillId}/detail", method = RequestMethod.GET)
 	Result<Seckill> detail(Long seckillId);
 
-	@RequestMapping(value = "/{seckillId}/exposer", method = RequestMethod.POST)
+	@RequestMapping(value = "/{seckillId}/exposer", method = RequestMethod.GET)
 	Result<Exposer> exposer(Long seckillId);
 
 	@RequestMapping(value = "/{seckillId}/{md5}/execution", method = RequestMethod.POST)
