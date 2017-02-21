@@ -9,6 +9,7 @@ import cn.ziav.xfinal.common.data.IEntity;
 
 @Entity
 public class Seckill implements IEntity<Long> {
+
 	@Id
 	private long seckillId;
 

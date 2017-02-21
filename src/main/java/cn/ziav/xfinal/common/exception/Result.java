@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * 返回对象
- * @author Frank
+ * @author Z.avi
  */
 public class Result<T> implements Serializable {
 
