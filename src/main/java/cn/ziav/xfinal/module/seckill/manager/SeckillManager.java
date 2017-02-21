@@ -3,6 +3,7 @@ package cn.ziav.xfinal.module.seckill.manager;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,5 +36,15 @@ public class SeckillManager {
 
 	public List<Seckill> queryAll(int offset, int limit) {
 		return seckillEntityService.list(offset, limit);
+	}
+
+	@Cacheable(cacheNames = "seckill")
+	public Seckill testModel() {
+		Seckill seckill = new Seckill();
+		seckill.setName("Ziav");
+		seckill.setCreateTime(new Date());
+		seckill.setEndTime(new Date());
+		seckill.setNumber(6);
+		return seckill;
 	}
 }
