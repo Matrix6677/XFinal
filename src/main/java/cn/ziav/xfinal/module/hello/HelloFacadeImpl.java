@@ -19,7 +19,7 @@ public class HelloFacadeImpl implements HelloFacade {
 	private SeckillManager seckillManager;
 
 	@Override
-	@Cacheable(cacheNames = "caches", key = "#param")
+	@Cacheable(cacheNames = "hello", key = "#param")
 	public Result<String> hello(@PathVariable String param) {
 		return Result.SUCCESS("hello: " + param);
 	}

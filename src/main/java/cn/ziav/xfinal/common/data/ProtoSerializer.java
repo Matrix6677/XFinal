@@ -45,8 +45,9 @@ public class ProtoSerializer implements RedisSerializer<Object> {
 			return null;
 		}
 
-		ProtostuffIOUtil.mergeFrom(bytes, wrapper, schema);
-		return wrapper.data;
+		ProtoWrapper newMessage = schema.newMessage();
+		ProtostuffIOUtil.mergeFrom(bytes, newMessage, schema);
+		return newMessage.data;
 	}
 
 }
