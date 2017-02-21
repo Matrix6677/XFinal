@@ -30,10 +30,12 @@ public class SeckillManager {
 		seckillEntityService.update(seckill);
 	}
 
+	@Cacheable(cacheNames = "seckill", key = "#p0")
 	public Seckill queryById(long seckillId) {
 		return seckillEntityService.load(seckillId);
 	}
 
+	@Cacheable(cacheNames = "seckillList")
 	public List<Seckill> queryAll(int offset, int limit) {
 		return seckillEntityService.list(offset, limit);
 	}

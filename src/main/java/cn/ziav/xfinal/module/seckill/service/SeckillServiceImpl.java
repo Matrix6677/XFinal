@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
@@ -28,8 +26,6 @@ public class SeckillServiceImpl implements SeckillService {
 	private SeckillManager seckillManager;
 	@Autowired
 	private SuccessKilledManager successKilledManager;
-	@Autowired
-	private StringRedisTemplate redisTpl;
 
 	@Override
 	public List<Seckill> getSeckillList() {
@@ -45,15 +41,9 @@ public class SeckillServiceImpl implements SeckillService {
 	public Exposer exportSeckillUrl(long seckillId) {
 		// 优化点：缓存优化：超时的基础上维护一致性
 		// 1.访问redis
-		BoundHashOperations<String, Long, Seckill> seckillHashOpt = redisTpl.boundHashOps("seckill");
-		Seckill seckill = seckillHashOpt.get(seckillId);
+		Seckill seckill = seckillManager.queryById(seckillId);
 		if (seckill == null) {
-			seckill = seckillManager.queryById(seckillId);
-
-			if (seckill == null) {
-				return new Exposer(false, seckillId);
-			}
-			seckillHashOpt.put(seckillId, seckill);
+			return new Exposer(false, seckillId);
 		}
 
 		Date startTime = seckill.getStartTime();
