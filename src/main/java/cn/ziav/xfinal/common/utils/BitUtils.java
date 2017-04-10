@@ -65,18 +65,22 @@ public class BitUtils {
 		if (!isOne(value, pos)) {
 			return count;
 		}
-		for (int left = 1 << pos + 1, right = left >>> 1;;) {
-			if ((value & left) != left && (value & right) != right) {
+		count = 1;
+
+		// 往高位遍历
+		for (int left = pos + 1; left <= 31; left++) {
+			if (!isOne(value, left)) {
 				break;
 			}
-			if ((value & left) == left) {
-				++count;
-				left <<= 1;
+			++count;
+		}
+
+		// 往低位遍历
+		for (int right = pos - 1; right >= 0; right--) {
+			if (!isOne(value, right)) {
+				break;
 			}
-			if ((value & right) == right) {
-				++count;
-				right >>>= 1;
-			}
+			++count;
 		}
 		return count;
 	}
