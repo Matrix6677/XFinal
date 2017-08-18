@@ -13,20 +13,20 @@ import cn.ziav.xfinal.module.seckill.manager.SeckillManager;
 
 @RestController
 public class HelloFacadeImpl implements HelloFacade {
-	@DataAccess
-	private EntityService<Long, Seckill> seckillService;
-	@Autowired
-	private SeckillManager seckillManager;
+  @DataAccess
+  private EntityService<Long, Seckill> seckillService;
+  @Autowired
+  private SeckillManager seckillManager;
 
-	@Override
-	@Cacheable(cacheNames = "hello", key = "#param")
-	public Result<String> hello(@PathVariable String param) {
-		return Result.SUCCESS("hello: " + param);
-	}
+  @Override
+  @Cacheable(cacheNames = "hello", key = "#param")
+  public Result<String> hello(@PathVariable String param) {
+    return Result.SUCCESS("hello: " + param);
+  }
 
-	@Override
-	public Result<Seckill> getSeckill() {
-		return Result.SUCCESS(seckillManager.testModel());
-	}
+  @Override
+  public Result<Seckill> getSeckill() {
+    return Result.SUCCESS(seckillManager.testModel());
+  }
 
 }

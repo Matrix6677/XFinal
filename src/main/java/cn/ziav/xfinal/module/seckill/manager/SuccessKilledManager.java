@@ -8,14 +8,15 @@ import cn.ziav.xfinal.module.seckill.manager.SuccessKilled.PK;
 
 @Repository
 public class SuccessKilledManager {
-	@DataAccess
-	private EntityService<PK, SuccessKilled> successKilledService;
+  @DataAccess
+  private EntityService<PK, SuccessKilled> successKilledService;
 
-	public SuccessKilled insertSuccessKilled(long seckillId, long userPhone) {
-		return successKilledService.loadOrCreate(PK.valueOf(seckillId, userPhone), pk -> SuccessKilled.valueOf(pk));
-	}
+  public SuccessKilled insertSuccessKilled(long seckillId, long userPhone) {
+    return successKilledService.loadOrCreate(PK.valueOf(seckillId, userPhone),
+        pk -> SuccessKilled.valueOf(pk));
+  }
 
-	public SuccessKilled queryByIdWithSeckill(long seckillId, long userPhone) {
-		return successKilledService.load(PK.valueOf(seckillId, userPhone));
-	}
+  public SuccessKilled queryByIdWithSeckill(long seckillId, long userPhone) {
+    return successKilledService.load(PK.valueOf(seckillId, userPhone));
+  }
 }

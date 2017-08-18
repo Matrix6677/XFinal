@@ -17,20 +17,19 @@ import cn.ziav.xfinal.common.data.ProtoSerializer;
 @EnableRedisHttpSession
 public class CacheConfig extends CachingConfigurerSupport {
 
-	@Bean
-	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
-		RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-		redisTemplate.setConnectionFactory(factory);
-		redisTemplate.setEnableTransactionSupport(true);
-		redisTemplate.setValueSerializer(new ProtoSerializer());
-		return redisTemplate;
-	}
+  @Bean
+  public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
+    RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+    redisTemplate.setConnectionFactory(factory);
+    redisTemplate.setEnableTransactionSupport(true);
+    redisTemplate.setValueSerializer(new ProtoSerializer());
+    return redisTemplate;
+  }
 
-	@Bean
-	public CacheManager cacheManager(RedisTemplate<String, Object> redisTemplate) {
-		RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
-		// cacheManager.setDefaultExpiration(300);
-		return cacheManager;
-	}
-
+  @Bean
+  public CacheManager cacheManager(RedisTemplate<String, Object> redisTemplate) {
+    RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
+    // cacheManager.setDefaultExpiration(300);
+    return cacheManager;
+  }
 }

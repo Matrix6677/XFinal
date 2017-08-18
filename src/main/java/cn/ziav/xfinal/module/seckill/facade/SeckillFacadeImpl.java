@@ -16,42 +16,43 @@ import cn.ziav.xfinal.module.seckill.service.SeckillService;
 @RestController
 public class SeckillFacadeImpl implements SeckillFacade {
 
-	@Autowired
-	private SeckillService seckillService;
+  @Autowired
+  private SeckillService seckillService;
 
-	@Override
-	public Result<List<Seckill>> list() {
-		// 获取列表页
-		return Result.SUCCESS(seckillService.getSeckillList());
-	}
+  @Override
+  public Result<List<Seckill>> list() {
+    // 获取列表页
+    return Result.SUCCESS(seckillService.getSeckillList());
+  }
 
-	@Override
-	public Result<Seckill> detail(@PathVariable Long seckillId) {
-		if (seckillId == null) {
-			return Result.ERROR(SeckillResult.SECKILL_ID_ILLEGAL);
-		}
-		return Result.SUCCESS(seckillService.getById(seckillId));
-	}
+  @Override
+  public Result<Seckill> detail(@PathVariable Long seckillId) {
+    if (seckillId == null) {
+      return Result.ERROR(SeckillResult.SECKILL_ID_ILLEGAL);
+    }
+    return Result.SUCCESS(seckillService.getById(seckillId));
+  }
 
-	@Override
-	public Result<Exposer> exposer(@PathVariable Long seckillId) {
-		Exposer exposer = seckillService.exportSeckillUrl(seckillId);
-		return Result.SUCCESS(exposer);
-	}
+  @Override
+  public Result<Exposer> exposer(@PathVariable Long seckillId) {
+    Exposer exposer = seckillService.exportSeckillUrl(seckillId);
+    return Result.SUCCESS(exposer);
+  }
 
-	@Override
-	public Result<Integer> execute(@PathVariable Long seckillId, @PathVariable String md5, @CookieValue(value = "killPhone", required = false) Long phone) {
-		if (phone == null) {
-			return Result.ERROR(SeckillResult.NOT_REGISTER);
-		}
-		seckillService.executeSeckill(seckillId, phone, md5);
-		return Result.SUCCESS();
-	}
+  @Override
+  public Result<Integer> execute(@PathVariable Long seckillId, @PathVariable String md5,
+      @CookieValue(value = "killPhone", required = false) Long phone) {
+    if (phone == null) {
+      return Result.ERROR(SeckillResult.NOT_REGISTER);
+    }
+    seckillService.executeSeckill(seckillId, phone, md5);
+    return Result.SUCCESS();
+  }
 
-	@Override
-	public Result<Long> time() {
-		Date now = new Date();
-		return Result.SUCCESS(now.getTime());
-	}
+  @Override
+  public Result<Long> time() {
+    Date now = new Date();
+    return Result.SUCCESS(now.getTime());
+  }
 
 }
