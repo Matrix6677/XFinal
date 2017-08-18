@@ -20,10 +20,4 @@ public class ApplicationTests {
 
     seckillHashOpt.put(1L, new Seckill());
   }
-
-  public static void main(String[] args) throws InterruptedException {
-    Goods goods = new Equip();
-    goods.encode();
-  }
-
 }
