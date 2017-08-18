@@ -6,12 +6,12 @@ import cn.ziav.xfinal.module.seckill.manager.Seckill;
 import cn.ziav.xfinal.module.seckill.model.Exposer;
 
 public interface SeckillService {
-	List<Seckill> getSeckillList();
+  List<Seckill> getSeckillList();
 
-	Seckill getById(long seckillId);
+  Seckill getById(long seckillId);
 
-	Exposer exportSeckillUrl(long seckillId);
+  Exposer exportSeckillUrl(long seckillId);
 
-	void executeSeckill(long seckillId, long userPhone, String md5);
+  void executeSeckill(long seckillId, long userPhone, String md5);
 
 }

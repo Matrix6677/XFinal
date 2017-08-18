@@ -8,9 +8,9 @@ import cn.ziav.xfinal.module.seckill.manager.Seckill;
 
 @RequestMapping(Modules.HELLO_MODULE)
 public interface HelloFacade {
-	@RequestMapping("/hello/{param}")
-	Result<String> hello(String param);
+  @RequestMapping("/hello/{param}")
+  Result<String> hello(String param);
 
-	@RequestMapping("/getSeckill")
-	Result<Seckill> getSeckill();
+  @RequestMapping("/getSeckill")
+  Result<Seckill> getSeckill();
 }

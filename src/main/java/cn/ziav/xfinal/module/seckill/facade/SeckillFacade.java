@@ -12,18 +12,18 @@ import cn.ziav.xfinal.module.seckill.model.Exposer;
 
 @RequestMapping(Modules.SECKILL_MODULE)
 public interface SeckillFacade {
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	Result<List<Seckill>> list();
+  @RequestMapping(value = "/list", method = RequestMethod.GET)
+  Result<List<Seckill>> list();
 
-	@RequestMapping(value = "/{seckillId}/detail", method = RequestMethod.GET)
-	Result<Seckill> detail(Long seckillId);
+  @RequestMapping(value = "/{seckillId}/detail", method = RequestMethod.GET)
+  Result<Seckill> detail(Long seckillId);
 
-	@RequestMapping(value = "/{seckillId}/exposer", method = RequestMethod.GET)
-	Result<Exposer> exposer(Long seckillId);
+  @RequestMapping(value = "/{seckillId}/exposer", method = RequestMethod.GET)
+  Result<Exposer> exposer(Long seckillId);
 
-	@RequestMapping(value = "/{seckillId}/{md5}/execution", method = RequestMethod.POST)
-	Result<Integer> execute(Long seckillId, String md5, Long phone);
+  @RequestMapping(value = "/{seckillId}/{md5}/execution", method = RequestMethod.POST)
+  Result<Integer> execute(Long seckillId, String md5, Long phone);
 
-	@RequestMapping(value = "/time/now", method = RequestMethod.GET)
-	Result<Long> time();
+  @RequestMapping(value = "/time/now", method = RequestMethod.GET)
+  Result<Long> time();
 }
