@@ -10,7 +10,7 @@ public class ManagedException extends RuntimeException {
   private static final long serialVersionUID = -770105656824906425L;
 
   /** 错误代码 */
-  private int code;
+  private final int code;
 
   public ManagedException(int code) {
     super();
